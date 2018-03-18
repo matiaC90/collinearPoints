@@ -109,16 +109,8 @@ public class CollinearPointService {
 		 * if (this.points.isEmpty()) { this.readFromFile("input"); }
 		 */
 
-		if (numberPointsOnLine >= TWO_POINTS) {
-			for (int i = 0; i < points.size(); i++) {
-				Point pivot = points.get(i);
-				getCoolinearPointsForPivot(numberPointsOnLine, lines, pivot);
-			}
-		}
-
 		// always draw a line from two points
-		else if (numberPointsOnLine == TWO_POINTS) {
-
+		if (numberPointsOnLine == TWO_POINTS) {
 			for (int i = 0; i < points.size(); i++) {
 				Point pivot = points.get(i);
 				List<Point> otherPoints = points.stream().filter(p -> !p.equals(pivot)).collect(Collectors.toList());
@@ -126,6 +118,14 @@ public class CollinearPointService {
 					Point[] ret = { pivot, otherPoints.get(j) };
 					lines.add(ret);
 				}
+			}
+			
+		}
+		
+		if (numberPointsOnLine >= TWO_POINTS) {
+			for (int i = 0; i < points.size(); i++) {
+				Point pivot = points.get(i);
+				getCoolinearPointsForPivot(numberPointsOnLine, lines, pivot);
 			}
 		}
 
