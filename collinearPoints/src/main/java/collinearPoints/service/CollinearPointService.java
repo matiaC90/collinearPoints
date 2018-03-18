@@ -92,8 +92,8 @@ public class CollinearPointService {
 	 * have equal slopes with pivot. If yes, these points, with pivot, are collinear
 	 * and they make a line.
 	 * 
-	 * If N is 1, the algorithm not started. If N is two, algorith provide an extra
-	 * control to avoid duplicate
+	 * If N is 1, the algorithm not started. 
+	 * If N is 2, always is possible draw line from two points.
 	 * 
 	 * @throws Exception
 	 * 
