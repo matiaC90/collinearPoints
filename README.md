@@ -41,7 +41,7 @@ From a space points:
   
    If N is 1, the algorithm not started. 
   
-   If N is two, algorithm provide an added check to avoid duplicate
+   If N is 2, always is possible draw line from two points.
 
 # Extra:
 To populate space without manually call post api "/point/", you use the method in collinearPointService called "readFromFile" which read a file from directory "src/main/resources".
