@@ -109,7 +109,7 @@ public class CollinearPointService {
 		 * if (this.points.isEmpty()) { this.readFromFile("input"); }
 		 */
 
-		if (numberPointsOnLine > TWO_POINTS) {
+		if (numberPointsOnLine >= TWO_POINTS) {
 			for (int i = 0; i < points.size(); i++) {
 				Point pivot = points.get(i);
 				getCoolinearPointsForPivot(numberPointsOnLine, lines, pivot);
