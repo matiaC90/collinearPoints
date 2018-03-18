@@ -7,7 +7,7 @@ more COLLINEAR points.
 
 From requirements, apis not consumes / produces any other response datas type except json.
 
-Adopted approach:
+# Adopted approach:
 
 To resolve this problem I used the slope formula.
 For two points p0 (x0,y0) , p1 (x1,y1) , the slope is calculated as:
@@ -23,7 +23,7 @@ Slope of AB = slope of BC = slope of AC,
 
 then A, B and C are collinear points.
 
-Algorithm flow:
+# Algorithm flow:
 
 From a space points:
 
@@ -41,10 +41,11 @@ From a space points:
   
   If N is two, algorithm provide an added check to avoid duplicate
 
-Extra:
+# Extra:
 To populate space without manually call post api "/point/", you use the method in collinearPointService called "readFromFile" which read a file from directory "src/main/resources".
 
 The file default extension is "txt" and respect this example content:
+
 x coordinate y coordinate
 
 for example
