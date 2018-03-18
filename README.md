@@ -40,6 +40,7 @@ The file default extension is "txt" and respect this example content:
 x coordinate y coordinate
 
 for example
+
 2 4
 
 4 6
