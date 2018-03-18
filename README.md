@@ -27,19 +27,19 @@ then A, B and C are collinear points.
 
 From a space points:
 
-1.Choose an point p as pivot element 
+1. Choose an point p as pivot element 
 
-2.For others points calculate their slope with pivot. 
+2. For others points calculate their slope with pivot. 
 
-3.In according (2) sort these points in new list.
+3. In according (2) sort these points in new list.
 
-4.iterate this new sorted list. Check if any N (or more) adjacent points in this list, have equal slopes with pivot. 
+4. Iterate new sorted list. Check if any N (or more) adjacent points in this list, have equal slopes with pivot. 
 
-  If yes, these points, with pivot, are collinear and they make a line.
+   If yes, these points, with pivot, are collinear and they make a line.
   
-  If N is 1, the algorithm not started. 
+   If N is 1, the algorithm not started. 
   
-  If N is two, algorithm provide an added check to avoid duplicate
+   If N is two, algorithm provide an added check to avoid duplicate
 
 # Extra:
 To populate space without manually call post api "/point/", you use the method in collinearPointService called "readFromFile" which read a file from directory "src/main/resources".
