@@ -8,12 +8,14 @@ more COLLINEAR points.
 From requirements, apis not consumes / produces any other response datas type except json.
 
 Adopted approach:
-To resolve this problem I used the slope formula -> 
+
+To resolve this problem I used the slope formula.
 For two points p0 (x0,y0) , p1 (x1,y1) , the slope is calculated as:
 
 slope = (y1 - y0) / (x1 -x0)
 
 Definition collinear:
+
 Three or more points are collinear, if slope of any two pairs of points is same.
 With three points A, B and C, If
 
