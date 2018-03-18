@@ -147,7 +147,7 @@ public class CollinearPointService {
 			// Necessary boolean condition because slope from point and pivot is equal at
 			// first iteration
 			if (isFirstIteration || currentSlope != previous) {
-				checkCollinearPoints(numberPointsOnLine, lines, pivot, collinearPointsForPivot);
+				checkCollinearPoints(lines, pivot, collinearPointsForPivot);
 				// reset
 				collinearPointsForPivot.clear();
 			}
@@ -162,16 +162,16 @@ public class CollinearPointService {
 				isFirstIteration = false;
 		}
 
-		// check if last n points are collinear (edge case)
-		checkCollinearPoints(numberPointsOnLine, lines, pivot, collinearPointsForPivot);
+		// check if last three or more points are collinear (edge case)
+		checkCollinearPoints(lines, pivot, collinearPointsForPivot);
 	}
 
-	private void checkCollinearPoints(int numberPointsOnLine, List<Point[]> lines, Point pivot,
+	private void checkCollinearPoints(List<Point[]> lines, Point pivot,
 			List<Point> collinearPointsForPivot) {
 
 		// this check to salt first iteration
 		if (collinearPointsForPivot.size() > 0) {
-			boolean checkCollinearSize = (collinearPointsForPivot.size() + 1) >= numberPointsOnLine;
+			boolean checkCollinearSize = (collinearPointsForPivot.size() + 1) >= 3;
 
 			// +1 for next insert of pivot
 			if (checkCollinearSize) {
