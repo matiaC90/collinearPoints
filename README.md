@@ -41,13 +41,14 @@ x coordinate y coordinate
 
 for example
 2 4
+
 4 6
+
 6 8
 
 In service file there is a commented code to initialize space.
 
 * Remove comment 
-* 
 * if (this.points.isEmpty()) { this.readFromFile("input"); }
  */
 
