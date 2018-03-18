@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,6 @@ import collinearPoints.utils.FileUtils;
 @Service
 public class CollinearPointService {
 
-	private final int ONE_POINT = 1;
 	private final int TWO_POINTS = 2;
 
 	private List<Point> points;
@@ -29,6 +29,7 @@ public class CollinearPointService {
 	/**
 	 * 
 	 * Function to get space
+	 * 
 	 * @return
 	 */
 	public List<Point> getPoints() {
@@ -38,7 +39,7 @@ public class CollinearPointService {
 	/**
 	 * 
 	 * @param point
-	 * Function to add point
+	 *            Function to add point
 	 * @return
 	 */
 	public Point addPoint(Point point) {
@@ -85,12 +86,11 @@ public class CollinearPointService {
 	/**
 	 * Algorithm Steps:
 	 * 
-	 * 1.Choose an point p as pivot element 
-	 * 2.For others points calculate their slope with pivot. 
-	 * 3.In according (2) sort these points in new list.
-	 * 4.iterate this new sorted list. Check if any N (or more) adjacent points in this list, have equal
-	 * slopes with pivot. 
-	 * If yes, these points, with pivot, are collinear and they make a line.
+	 * 1.Choose an point p as pivot element 2.For others points calculate their
+	 * slope with pivot. 3.In according (2) sort these points in new list. 4.iterate
+	 * this new sorted list. Check if any N (or more) adjacent points in this list,
+	 * have equal slopes with pivot. If yes, these points, with pivot, are collinear
+	 * and they make a line.
 	 * 
 	 * If N is 1, the algorithm not started. If N is two, algorith provide an extra
 	 * control to avoid duplicate
@@ -109,10 +109,23 @@ public class CollinearPointService {
 		 * if (this.points.isEmpty()) { this.readFromFile("input"); }
 		 */
 
-		if (numberPointsOnLine > ONE_POINT) {
+		if (numberPointsOnLine > TWO_POINTS) {
 			for (int i = 0; i < points.size(); i++) {
 				Point pivot = points.get(i);
 				getCoolinearPointsForPivot(numberPointsOnLine, lines, pivot);
+			}
+		}
+
+		// always draw a line from two points
+		else if (numberPointsOnLine == TWO_POINTS) {
+
+			for (int i = 0; i < points.size(); i++) {
+				Point pivot = points.get(i);
+				List<Point> otherPoints = points.stream().filter(p -> !p.equals(pivot)).collect(Collectors.toList());
+				for (int j = 0; j < otherPoints.size(); j++) {
+					Point[] ret = { pivot, otherPoints.get(j) };
+					lines.add(ret);
+				}
 			}
 		}
 
@@ -156,14 +169,12 @@ public class CollinearPointService {
 	private void checkCollinearPoints(int numberPointsOnLine, List<Point[]> lines, Point pivot,
 			List<Point> collinearPointsForPivot) {
 
-		//this check to salt first iteration
+		// this check to salt first iteration
 		if (collinearPointsForPivot.size() > 0) {
 			boolean checkCollinearSize = (collinearPointsForPivot.size() + 1) >= numberPointsOnLine;
-			boolean checkDuplicateOnTwoPointsLine = (collinearPointsForPivot.get(0).equals(pivot)
-					&& numberPointsOnLine == TWO_POINTS);
 
 			// +1 for next insert of pivot
-			if (checkCollinearSize && !checkDuplicateOnTwoPointsLine) {
+			if (checkCollinearSize) {
 				collinearPointsForPivot.add(pivot);
 				Collections.sort(collinearPointsForPivot);
 
