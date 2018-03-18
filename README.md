@@ -1,5 +1,7 @@
 # collinearPoints
-A java solution for Pattern Recognition
+A java solution for Pattern Recognition. 
+
+I have used Spring boot, because I will create a standalone application. It can be executed with java -jar and promote the microservices architecture.
 
 Problem:
 Given a set of P feature points in the bidimensional plane, determine every line that contains at least N or
